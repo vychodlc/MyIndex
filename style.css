@@ -1,0 +1,120 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: linear-gradient(to right bottom, #322f71, #5183c3);
+  position: relative;
+}
+
+.box {
+  width: 60vw;
+  height: 70vh;
+  background: linear-gradient(to right top, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  border-radius: 1rem;
+  backdrop-filter: blur(4rem);
+}
+
+.circle {
+  width: 40vh;
+  height: 40vh;
+  border-radius: 50%;
+  background: linear-gradient(to right top, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+  position: absolute;
+}
+#circle1 { right: 10vw; top: 5vh;}
+#circle2 { left: 10vw; bottom: 5vh;}
+
+.box .header {
+  width: 60vw;
+  height: 7vh;
+  border-bottom: 1px solid rgba(255,255,255, 0.1);
+  position: relative;
+}
+.box .header .esc {
+  width: 65px;
+  margin-left: 1vw;
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box .header .esc .dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.box .header .esc .dot:nth-child(1) { background-color: #f96057;}
+.box .header .esc .dot:nth-child(2) { background-color: #f8ce52;}
+.box .header .esc .dot:nth-child(3) { background-color: #5fcf65;}
+
+.box .menu {
+  width: 12vw;
+  height: 63vh;
+  overflow-y: scroll;
+  border-right: 1px solid rgba(255,255,255, 0.1);
+  padding: 0 20px;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding-bottom: 20px;
+}
+
+.box .menu::-webkit-scrollbar {
+  width: 4px;    
+  /*height: 4px;*/
+}
+.box .menu::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.1);
+}
+.box .menu::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  border-radius: 0;
+  background: rgba(0,0,0,0.1);
+}
+
+.menuchild .item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 30px;
+  transform: translateX(10px);
+}
+.menuchild .title {
+  color: rgba(255,255,255, 0.3);
+  height: 50px;
+  line-height: 50px;
+  transform: none;
+}
+.menuchild .item .icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 7px;
+}
+.menuchild .item .icon img {
+  width: 18px;
+  height: 18px;
+}
+.menuchild .dot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(to right bottom, #007acc, #5183c3);;
+}
