@@ -21,16 +21,17 @@
         <div class="search">
           <div class="icon"><img src="./assets/options/search.png" alt=""></div>
           <div class="searchbox">
-            <input type="text" name="" id="" placeholder="Search">
+            <input type="text" name="query" id="query" placeholder="Search">
           </div>
+          <div class="icon" id="delete"><img src="./assets/options/delete.png" alt=""></div>
         </div>
         <div class="options">
-          <div class="option"><img src="./assets/options/Bing.png" alt=""></div>
-          <div class="option"><img src="./assets/options/github.png" alt=""></div>
-          <div class="option"><img src="./assets/options/zhihu.png" alt=""></div>
-          <div class="option"><img src="./assets/options/Codeopen.png" alt=""></div>
-          <div class="option"><img src="./assets/options/weibo.png" alt=""></div>
-          <div class="option"><img src="./assets/options/bilibili.png" alt=""></div>
+          <div class="option" id="bing"><img src="./assets/options/Bing.png" alt=""></div>
+          <div class="option" id="github"><img src="./assets/options/github.png" alt=""></div>
+          <div class="option" id="zhihu"><img src="./assets/options/zhihu.png" alt=""></div>
+          <div class="option" id="codepen"><img src="./assets/options/Codeopen.png" alt=""></div>
+          <div class="option" id="weibo"><img src="./assets/options/weibo.png" alt=""></div>
+          <div class="option" id="bilibili"><img src="./assets/options/bilibili.png" alt=""></div>
         </div>
       </div>
       <div class="menu">
@@ -199,5 +200,72 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById('query').value = '';
+    document.getElementById('query').focus();
+    const searchList = {
+      'bing': 'https://cn.bing.com/search?q=',
+      'github': 'https://github.com/search?q=',
+      'zhihu': 'https://www.zhihu.com/search?type=content&q=',
+      'codepen': 'https://codepen.io/search/pens?q=',
+      'weibo': 'https://s.weibo.com/weibo/',
+      'bilibili': 'https://search.bilibili.com/all?keyword=',
+    }
+    const iconList = [
+      { name: 'Github', url: '', icon: ''},
+      { name: 'Github', url: '', icon: ''},
+      { name: 'Github', url: '', icon: ''},
+      { name: 'Github', url: '', icon: ''},
+      { name: 'Github', url: '', icon: ''},
+    ]
+
+    document.onkeydown = function (event_e){
+      if(window.event){
+        event_e = window.event;
+      }
+      var int_keycode = event_e.charCode || event_e.keyCode;
+      if(int_keycode == '13'){
+        let query = document.getElementById('query').value;
+        if(query!='') {
+          window.location.href = searchList['bing'] + query
+        }
+      }
+    }
+
+    let opts = document.getElementsByClassName('option')
+    for(let opt of opts) {
+      opt.addEventListener('click', (e)=>{
+        e.path[1].style.width = '50px';
+        e.path[1].style.height = '50px';
+
+        setTimeout(()=>{
+          e.path[1].style.width = '30px';
+          e.path[1].style.height = '30px';
+          let query = document.getElementById('query').value;
+          if(query!='') {
+            window.location.href = searchList[e.path[1].id] + query
+          }
+        }, 100)
+      })
+    }
+
+    let query = document.getElementById('query')
+    let delIcon = document.getElementById('delete')
+    query.oninput = ()=>{
+      if(query.value.toString()!='') {
+        delIcon.style.display = 'flex'
+      } else {
+        delIcon.style.display = 'none'
+      }
+    }
+
+    delIcon.addEventListener('click', ()=>{
+      console.log(delIcon.style.display);
+      if(delIcon.style.display=='flex') {
+        query.value = ''
+        query.focus()
+      }
+    })
+  </script>
 </body>
 </html>
