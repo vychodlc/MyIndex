@@ -183,7 +183,7 @@ a {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: linear-gradient(to right bottom, #007acc, #5183c3);;
+  background: linear-gradient(to right bottom, #007acc, #5183c3);
 }
 
 .bookmark {
@@ -195,6 +195,7 @@ a {
 .markbox {
   width: calc(48vw - 10px);
   height: 61vh;
+  overflow-x: hidden;
   overflow-y: scroll;
   color: #fff;
   font-size: 14px;
